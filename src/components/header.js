@@ -12,4 +12,4 @@ Header.propTypes = {
   message: React.PropTypes.string
 };
 
-export default header;
+export default Header;
