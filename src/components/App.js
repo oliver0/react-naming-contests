@@ -3,7 +3,10 @@ import Header from './Header';
 import ContestPreview from './ContestPreview';
 
 class App extends Component {
-  state = {pageHeader: 'Naming Contests'};
+  state = {
+    pageHeader: 'Naming Contests',
+    contests: []
+  };
 
   componentDidMount(){
       // ajax timers, listeners
