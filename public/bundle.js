@@ -22142,9 +22142,17 @@
 	  _inherits(App, _Component);
 	
 	  function App() {
+	    var _ref;
+	
+	    var _temp, _this, _ret;
+	
 	    _classCallCheck(this, App);
 	
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+	
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = { pageHeader: 'Naming Contests' }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 	
 	  _createClass(App, [{
@@ -22153,7 +22161,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'App' },
-	        _react2.default.createElement(_Header2.default, { message: 'Naming Contests' }),
+	        _react2.default.createElement(_Header2.default, { message: this.state.pageHeader }),
 	        _react2.default.createElement('div', null)
 	      );
 	    }
