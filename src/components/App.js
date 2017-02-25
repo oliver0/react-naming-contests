@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import ContestPreview from './ContestPreview';
+import data from '../testData';
 
 class App extends Component {
   state = {
@@ -9,7 +10,9 @@ class App extends Component {
   };
 
   componentDidMount(){
-      // ajax timers, listeners
+    this.setState({
+      contests: data.contests
+    });
   }
 
   componentWillUnmount(){
@@ -22,7 +25,7 @@ class App extends Component {
       <div className="App">
         <Header message={this.state.pageHeader}/>
         <div>
-          {this.props.contests.map(contest =>
+          {this.state.contests.map(contest =>
             <ContestPreview key={contest.id} {...contest}/>
           )}
         </div>

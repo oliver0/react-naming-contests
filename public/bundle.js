@@ -57,10 +57,6 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _testData = __webpack_require__(/*! ./testData */ 180);
-	
-	var _testData2 = _interopRequireDefault(_testData);
-	
 	var _App = __webpack_require__(/*! ./components/App */ 178);
 	
 	var _App2 = _interopRequireDefault(_App);
@@ -22105,6 +22101,10 @@
 	
 	var _ContestPreview2 = _interopRequireDefault(_ContestPreview);
 	
+	var _testData = __webpack_require__(/*! ../testData */ 180);
+	
+	var _testData2 = _interopRequireDefault(_testData);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22136,7 +22136,9 @@
 	  _createClass(App, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      // ajax timers, listeners
+	      this.setState({
+	        contests: _testData2.default.contests
+	      });
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
@@ -22154,7 +22156,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          null,
-	          this.props.contests.map(function (contest) {
+	          this.state.contests.map(function (contest) {
 	            return _react2.default.createElement(_ContestPreview2.default, _extends({ key: contest.id }, contest));
 	          })
 	        )
