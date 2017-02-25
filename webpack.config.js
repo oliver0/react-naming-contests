@@ -8,7 +8,11 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader',
       }
     ]
   }
