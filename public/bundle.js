@@ -57,13 +57,19 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _App = __webpack_require__(/*! ./components/App */ 179);
+	var _testData = __webpack_require__(/*! ./testData */ 180);
+	
+	var _testData2 = _interopRequireDefault(_testData);
+	
+	var _App = __webpack_require__(/*! ./components/App */ 178);
 	
 	var _App2 = _interopRequireDefault(_App);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
+	console.log(_testData2.default);
+	
+	_reactDom2.default.render(_react2.default.createElement(_App2.default, { contests: _testData2.default.contests }), document.getElementById('root'));
 
 /***/ },
 /* 1 */
@@ -22074,41 +22080,6 @@
 
 /***/ },
 /* 178 */
-/*!**********************************!*\
-  !*** ./src/components/Header.js ***!
-  \**********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Header = function Header(_ref) {
-	  var message = _ref.message;
-	
-	  return _react2.default.createElement(
-	    "h2",
-	    { className: "Header text-center" },
-	    message
-	  );
-	};
-	
-	Header.propTypes = {
-	  message: _react2.default.PropTypes.string
-	};
-	
-	exports.default = Header;
-
-/***/ },
-/* 179 */
 /*!*******************************!*\
   !*** ./src/components/App.js ***!
   \*******************************/
@@ -22126,7 +22097,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Header = __webpack_require__(/*! ./Header */ 178);
+	var _Header = __webpack_require__(/*! ./Header */ 179);
 	
 	var _Header2 = _interopRequireDefault(_Header);
 	
@@ -22173,6 +22144,73 @@
 	;
 	
 	exports.default = App;
+
+/***/ },
+/* 179 */
+/*!**********************************!*\
+  !*** ./src/components/Header.js ***!
+  \**********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Header = function Header(_ref) {
+	  var message = _ref.message;
+	
+	  return _react2.default.createElement(
+	    "h2",
+	    { className: "Header text-center" },
+	    message
+	  );
+	};
+	
+	Header.propTypes = {
+	  message: _react2.default.PropTypes.string
+	};
+	
+	exports.default = Header;
+
+/***/ },
+/* 180 */
+/*!***************************!*\
+  !*** ./src/testData.json ***!
+  \***************************/
+/***/ function(module, exports) {
+
+	module.exports = {
+		"contests": [
+			{
+				"id": 1,
+				"categoryName": "Business/Company",
+				"contestName": "Cognitive Building Bricks"
+			},
+			{
+				"id": 2,
+				"categoryName": "Magazine/Newsletter",
+				"contestName": "Educating people about sustainable food production"
+			},
+			{
+				"id": 3,
+				"categoryName": "Software Component",
+				"contestName": "Big Data Analytics for Cash Circulation"
+			},
+			{
+				"id": 4,
+				"categoryName": "Website",
+				"contestName": "Free programming books"
+			}
+		]
+	};
 
 /***/ }
 /******/ ]);
