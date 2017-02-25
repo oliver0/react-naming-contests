@@ -22101,10 +22101,6 @@
 	
 	var _ContestPreview2 = _interopRequireDefault(_ContestPreview);
 	
-	var _testData = __webpack_require__(/*! ../testData */ 180);
-	
-	var _testData2 = _interopRequireDefault(_testData);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22137,7 +22133,7 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.setState({
-	        contests: _testData2.default.contests
+	        contests: data.contests
 	      });
 	    }
 	  }, {
@@ -22207,38 +22203,7 @@
 	exports.default = Header;
 
 /***/ },
-/* 180 */
-/*!***************************!*\
-  !*** ./src/testData.json ***!
-  \***************************/
-/***/ function(module, exports) {
-
-	module.exports = {
-		"contests": [
-			{
-				"id": 1,
-				"categoryName": "Business/Company",
-				"contestName": "Cognitive Building Bricks"
-			},
-			{
-				"id": 2,
-				"categoryName": "Magazine/Newsletter",
-				"contestName": "Educating people about sustainable food production"
-			},
-			{
-				"id": 3,
-				"categoryName": "Software Component",
-				"contestName": "Big Data Analytics for Cash Circulation"
-			},
-			{
-				"id": 4,
-				"categoryName": "Website",
-				"contestName": "Free programming books"
-			}
-		]
-	};
-
-/***/ },
+/* 180 */,
 /* 181 */
 /*!******************************************!*\
   !*** ./src/components/ContestPreview.js ***!
