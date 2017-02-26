@@ -22241,7 +22241,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "ContestPreview", onClick: this.handleClick },
+	        { className: "link ContestPreview", onClick: this.handleClick },
 	        _react2.default.createElement(
 	          "div",
 	          { className: "category-name" },
