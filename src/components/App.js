@@ -9,7 +9,6 @@ const pushState = (obj, url) =>
 
 class App extends Component {
   state = {
-    pageHeader: 'Naming Contests',
     contests: this.props.initialContests
   };
 
@@ -27,7 +26,6 @@ class App extends Component {
     );
     api.fetchContest(contestId).then(contest => {
       this.setState({
-        pageHeader: contest.contestName,
         currentContestId: contest.id,
         contests: {
           ...this.state.contests,
@@ -35,12 +33,20 @@ class App extends Component {
         }
       });
     });
-
-
   };
+  currentContest() {
+    return this.state.contests[this.state.currentContestId];
+  }
+  pageHeader() {
+    if (this.state.currentContestId) {
+      return this.currentContest().contestName;
+    }
+
+    return 'Naming Contests';
+  }
   currentContent() {
     if(this.state.currentContestId){
-      return <Contest {...this.state.contests[this.state.currentContestId]} />;
+      return <Contest {...this.currentContest()} />;
     }
     return <ContestList
             onContestClick = {this.fetchContest}
@@ -50,7 +56,7 @@ class App extends Component {
   render(){
     return(
       <div className="App">
-        <Header message={this.state.pageHeader}/>
+        <Header message={this.pageHeader()}/>
         {this.currentContent()}
       </div>
     );
