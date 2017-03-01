@@ -22129,8 +22129,8 @@
 	  window.onpopstate = handler;
 	};
 	
-	var App = function (_Component) {
-	  _inherits(App, _Component);
+	var App = function (_React$Component) {
+	  _inherits(App, _React$Component);
 	
 	  function App() {
 	    var _ref;
@@ -22147,8 +22147,8 @@
 	      pushState({ currentContestId: contestId }, '/contest/' + contestId);
 	      api.fetchContest(contestId).then(function (contest) {
 	        _this.setState({
-	          currentContestId: contest.id,
-	          contests: _extends({}, _this.state.contests, _defineProperty({}, contest.id, contest))
+	          currentContestId: contest._id,
+	          contests: _extends({}, _this.state.contests, _defineProperty({}, contest._id, contest))
 	        });
 	      });
 	    }, _this.fetchContestList = function () {
@@ -22160,11 +22160,21 @@
 	        });
 	      });
 	    }, _this.fetchNames = function (nameIds) {
+	      if (nameIds.length === 0) {
+	        return;
+	      }
 	      api.fetchNames(nameIds).then(function (names) {
 	        _this.setState({
 	          names: names
 	        });
 	      });
+	    }, _this.lookupName = function (nameId) {
+	      if (!_this.state.names || !_this.state.names[nameId]) {
+	        return {
+	          name: '...'
+	        };
+	      }
+	      return _this.state.names[nameId];
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 	
@@ -22204,9 +22214,11 @@
 	      if (this.state.currentContestId) {
 	        return _react2.default.createElement(_Contest2.default, _extends({
 	          contestListClick: this.fetchContestList,
-	          fetchNames: this.fetchNames
+	          fetchNames: this.fetchNames,
+	          lookupName: this.lookupName
 	        }, this.currentContest()));
 	      }
+	
 	      return _react2.default.createElement(_ContestList2.default, {
 	        onContestClick: this.fetchContest,
 	        contests: this.state.contests });
@@ -22224,13 +22236,11 @@
 	  }]);
 	
 	  return App;
-	}(_react.Component);
+	}(_react2.default.Component);
 	
 	App.propTypes = {
 	  initialData: _react2.default.PropTypes.object.isRequired
 	};
-	;
-	
 	exports.default = App;
 
 /***/ },
@@ -22439,6 +22449,8 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
+	      var _this2 = this;
+	
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "Contest" },
@@ -22485,8 +22497,8 @@
 	              this.props.nameIds.map(function (nameId) {
 	                return _react2.default.createElement(
 	                  "li",
-	                  { className: "list-group-item" },
-	                  nameId
+	                  { key: nameId, className: "list-group-item" },
+	                  _this2.props.lookupName(nameId).name
 	                );
 	              })
 	            )
@@ -22544,7 +22556,9 @@
 	  description: _react.PropTypes.string.isRequired,
 	  contestListClick: _react.PropTypes.func.isRequired,
 	  fetchNames: _react.PropTypes.func.isRequired,
-	  nameIds: _react.PropTypes.array.isRequired
+	  nameIds: _react.PropTypes.array.isRequired,
+	  lookupName: _react.PropTypes.func.isRequired
+	
 	};
 	
 	exports.default = Contest;
