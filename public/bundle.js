@@ -22367,7 +22367,7 @@
 	    }
 	
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ContestPreview.__proto__ || Object.getPrototypeOf(ContestPreview)).call.apply(_ref, [this].concat(args))), _this), _this.handleClick = function () {
-	      _this.props.onClick(_this.props.id);
+	      _this.props.onClick(_this.props._id);
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 	
@@ -22397,7 +22397,7 @@
 	;
 	
 	ContestPreview.propTypes = {
-	  id: _react2.default.PropTypes.number.isRequired,
+	  _id: _react2.default.PropTypes.string.isRequired,
 	  categoryName: _react2.default.PropTypes.string.isRequired,
 	  contestName: _react2.default.PropTypes.string.isRequired,
 	  onClick: _react2.default.PropTypes.func.isRequired
