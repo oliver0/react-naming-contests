@@ -22095,9 +22095,13 @@
 	
 	var _Header2 = _interopRequireDefault(_Header);
 	
-	var _ContestList = __webpack_require__(/*! ./ContestList */ 207);
+	var _ContestList = __webpack_require__(/*! ./ContestList */ 180);
 	
 	var _ContestList2 = _interopRequireDefault(_ContestList);
+	
+	var _Contest = __webpack_require__(/*! ./Contest */ 182);
+	
+	var _Contest2 = _interopRequireDefault(_Contest);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22130,6 +22134,10 @@
 	      contests: _this.props.initialContests
 	    }, _this.fetchContest = function (contestId) {
 	      pushState({ currentContestId: contestId }, '/contest/' + contestId);
+	      _this.setState({
+	        pageHeader: _this.state.contests[contestId].contestName,
+	        currentContestId: contestId
+	      });
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 	
@@ -22142,15 +22150,23 @@
 	      //clean timers, listeners
 	    }
 	  }, {
+	    key: 'currentContent',
+	    value: function currentContent() {
+	      if (this.state.currentContestId) {
+	        return _react2.default.createElement(_Contest2.default, this.state.contests[this.state.currentContestId]);
+	      }
+	      return _react2.default.createElement(_ContestList2.default, {
+	        onContestClick: this.fetchContest,
+	        contests: this.state.contests });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'App' },
 	        _react2.default.createElement(_Header2.default, { message: this.state.pageHeader }),
-	        _react2.default.createElement(_ContestList2.default, {
-	          onContestClick: this.fetchContest,
-	          contests: this.state.contests })
+	        this.currentContent()
 	      );
 	    }
 	  }]);
@@ -22198,7 +22214,53 @@
 	exports.default = Header;
 
 /***/ },
-/* 180 */,
+/* 180 */
+/*!***************************************!*\
+  !*** ./src/components/ContestList.js ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _ContestPreview = __webpack_require__(/*! ./ContestPreview */ 181);
+	
+	var _ContestPreview2 = _interopRequireDefault(_ContestPreview);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var ContestList = function ContestList(_ref) {
+	  var contests = _ref.contests,
+	      onContestClick = _ref.onContestClick;
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'ContestList' },
+	    Object.keys(contests).map(function (contestId) {
+	      return _react2.default.createElement(_ContestPreview2.default, _extends({
+	        key: contestId,
+	        onClick: onContestClick
+	      }, contests[contestId]));
+	    })
+	  );
+	};
+	
+	ContestList.propTypes = {
+	  contests: _react2.default.PropTypes.object,
+	  onContestClick: _react2.default.PropTypes.func.isRequired
+	};
+	
+	exports.default = ContestList;
+
+/***/ },
 /* 181 */
 /*!******************************************!*\
   !*** ./src/components/ContestPreview.js ***!
@@ -22279,76 +22341,60 @@
 	exports.default = ContestPreview;
 
 /***/ },
-/* 182 */,
-/* 183 */,
-/* 184 */,
-/* 185 */,
-/* 186 */,
-/* 187 */,
-/* 188 */,
-/* 189 */,
-/* 190 */,
-/* 191 */,
-/* 192 */,
-/* 193 */,
-/* 194 */,
-/* 195 */,
-/* 196 */,
-/* 197 */,
-/* 198 */,
-/* 199 */,
-/* 200 */,
-/* 201 */,
-/* 202 */,
-/* 203 */,
-/* 204 */,
-/* 205 */,
-/* 206 */,
-/* 207 */
-/*!***************************************!*\
-  !*** ./src/components/ContestList.js ***!
-  \***************************************/
+/* 182 */
+/*!***********************************!*\
+  !*** ./src/components/Contest.js ***!
+  \***********************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(/*! react */ 1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _ContestPreview = __webpack_require__(/*! ./ContestPreview */ 181);
-	
-	var _ContestPreview2 = _interopRequireDefault(_ContestPreview);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var ContestList = function ContestList(_ref) {
-	  var contests = _ref.contests,
-	      onContestClick = _ref.onContestClick;
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'ContestList' },
-	    contests.map(function (contest) {
-	      return _react2.default.createElement(_ContestPreview2.default, _extends({
-	        key: contest.id,
-	        onClick: onContestClick
-	      }, contest));
-	    })
-	  );
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Contest = function (_Component) {
+	  _inherits(Contest, _Component);
+	
+	  function Contest() {
+	    _classCallCheck(this, Contest);
+	
+	    return _possibleConstructorReturn(this, (Contest.__proto__ || Object.getPrototypeOf(Contest)).apply(this, arguments));
+	  }
+	
+	  _createClass(Contest, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "Contest" },
+	        this.props.id
+	      );
+	    }
+	  }]);
+	
+	  return Contest;
+	}(_react.Component);
+	
+	Contest.propTypes = {
+	  id: _react.PropTypes.number.isRequired
 	};
 	
-	ContestList.propTypes = {
-	  contests: _react2.default.PropTypes.array,
-	  onContestClick: _react2.default.PropTypes.func.isRequired
-	};
-	
-	exports.default = ContestList;
+	exports.default = Contest;
 
 /***/ }
 /******/ ]);

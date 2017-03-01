@@ -7,6 +7,9 @@ const contests = data.contests.reduce((obj, contest) => {
   return obj;
 }, {});
 
+
+
+
 router.get('/contests', (req, res) =>{
   res.send({contests: contests
   });
