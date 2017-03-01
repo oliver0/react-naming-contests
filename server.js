@@ -2,8 +2,8 @@ import config from './config';
 import apiRouter from './api';
 import sassMiddleware from 'node-sass-middleware';
 import path from 'path';
-
 import express from 'express';
+
 const server = express();
 
 server.use(sassMiddleware({
@@ -14,9 +14,9 @@ server.use(sassMiddleware({
 server.set('view engine', 'ejs');
 
 import serverRender from './serverRender';
-server.get('/', (req, res) => {
-  serverRender()
-    .then(( {initialMarkup, initialData} ) => {
+server.get(['/', '/contest/:contestId'], (req, res) => {
+  serverRender(req.params.contestId)
+    .then(({ initialMarkup, initialData }) => {
       res.render('index',  {
         initialMarkup,
         initialData
