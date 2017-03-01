@@ -22482,16 +22482,13 @@
 	            _react2.default.createElement(
 	              "ul",
 	              { className: "list-group" },
-	              _react2.default.createElement(
-	                "li",
-	                { className: "list-group-item" },
-	                "Name one..."
-	              ),
-	              _react2.default.createElement(
-	                "li",
-	                { className: "list-group-item" },
-	                "Name two..."
-	              )
+	              this.props.nameIds.map(function (nameId) {
+	                return _react2.default.createElement(
+	                  "li",
+	                  { className: "list-group-item" },
+	                  nameId
+	                );
+	              })
 	            )
 	          )
 	        ),
