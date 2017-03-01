@@ -22408,7 +22408,16 @@
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "Contest" },
-	        this.props.description
+	        _react2.default.createElement(
+	          "div",
+	          { className: "contest-description" },
+	          this.props.description
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "home-link link" },
+	          "Contest List"
+	        )
 	      );
 	    }
 	  }]);
